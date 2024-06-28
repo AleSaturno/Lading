@@ -1,11 +1,16 @@
 let currentSlide = 0;
 
 function changeSlide(n) {
-    const slides = document.querySelectorAll('.carousel img');
-    currentSlide = (currentSlide + n + slides.length) % slides.length;
-    slides.forEach((slide, index) => {
-        slide.style.transform = `translateX(-${currentSlide * 100}%)`;
-    });
+    const slides = document.querySelectorAll('.carousel-images img');
+    const totalSlides = slides.length;
+    currentSlide = (currentSlide + n + totalSlides) % totalSlides;
+    const offset = -currentSlide * 100;
+    document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
+}
+
+function autoChangeSlide() {
+    changeSlide(1);
+    setTimeout(autoChangeSlide, 3000); // Cambia de imagen cada 3 segundos
 }
 
 document.getElementById('register-btn').addEventListener('click', function() {
@@ -23,3 +28,5 @@ window.addEventListener('click', function(event) {
         formContainer.style.display = 'none';
     }
 });
+
+window.onload = autoChangeSlide;
