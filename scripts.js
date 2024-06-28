@@ -10,7 +10,7 @@ function changeSlide(n) {
 
 function autoChangeSlide() {
     changeSlide(1);
-    setTimeout(autoChangeSlide, 3000); // Cambia de imagen cada 3 segundos
+    setTimeout(autoChangeSlide, 5000); // Cambia de imagen cada 3 segundos
 }
 
 document.getElementById('register-btn').addEventListener('click', function() {
