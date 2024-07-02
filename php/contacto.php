@@ -35,11 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Configuración de codificación
         $mail->CharSet = 'UTF-8';
 
-        // Remitente y destinatarios
-        $mail->setFrom('alesaturno64@gmail.com', 'Atacados Anónimos');
-        $mail->addAddress('alesaturno64@gmail.com'); // Reemplaza con tu dirección de Gmail (administrador)
-        $mail->addAddress($correo); // Envía el correo al usuario que se está registrando
-
         // Contenido del correo para el administrador
         $adminBody = "Nombre: " . htmlspecialchars($nombre) . "<br>Apellido: " . htmlspecialchars($apellido) . "<br>Correo: " . htmlspecialchars($correo) . "<br>Teléfono: " . htmlspecialchars($telefono) . "<br>Empresa: " . htmlspecialchars($empresa) . "<br>Cargo: " . htmlspecialchars($cargo) . "<br>Evento: " . htmlspecialchars($evento) . "<br>Consentimiento: " . htmlspecialchars($consentimiento ? 'Sí' : 'No');
         
@@ -49,14 +44,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                      Esperamos verte en el evento.<br><br>Saludos,<br>Atacados Anónimos";
 
         // Enviar correo al administrador
+        $mail->setFrom('alesaturno64@gmail.com', 'Atacados Anónimos');
+        $mail->addAddress('alesaturno64@gmail.com'); // Reemplaza con tu dirección de Gmail (administrador)
         $mail->isHTML(true);
         $mail->Subject = 'Nuevo Registro de Contacto';
         $mail->Body    = $adminBody;
         $mail->AltBody = strip_tags($adminBody);
         $mail->send();
 
-        // Enviar correo al usuario
+        // Limpiar direcciones para el siguiente correo
         $mail->clearAddresses();
+
+        // Enviar correo al usuario
         $mail->addAddress($correo);
         $mail->Subject = 'Confirmación de Registro - Atacados Anónimos Tour 2024';
         $mail->Body    = $userBody;
