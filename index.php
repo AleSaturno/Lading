@@ -33,14 +33,14 @@
                 <label for="cargo">Cargo *</label>
                 <select id="cargo" name="cargo" required>
                     <option value="">--Selecciona una opción--</option>
-                    <option value="gerente">Gerente</option>
-                    <option value="analista">Analista</option>
+                    <option value="Gerente">Gerente</option>
+                    <option value="Analista">Analista</option>
                 </select>
                 <label for="evento">Confirma la función de tu interés *</label>
                 <select id="evento" name="evento" required>
                     <option value="">- Selecciona el evento -</option>
-                    <option value="cordoba">Córdoba</option>
-                    <option value="mendoza">Mendoza</option>
+                    <option value="Cordoba">Córdoba</option>
+                    <option value="Mendoza">Mendoza</option>
                 </select>
                 <label>
                     <input type="checkbox" name="consentimiento" required>
